@@ -17,14 +17,12 @@ Please note, that this method works correctly only for workbooks with the defaul
 3. 参考POI examples toHTML, 重写获取内容的方法， 之前的内容数字不支持百分比，不支持公式
 4. 修改FilePrint
 ## main test
-        File file = new File("f:\\1.xls");
-		ConvertConfig config = new ConvertConfig();
-		config.setHtmlPrint(new FilePrint("f:\\html\\2.html"));
-		config.setMaxRowNum(500).setMaxCellNum(500).setExcelType("HSSF");
-		Excel2Html excel2Html = new Excel2Html(config);
-		FileInputStream fis = new FileInputStream(file);
-		excel2Html.conver(fis, 0);
-		fis.close();
+                String excelPath = "F:\\1.xls";
+                String htmlPath = "f:\\html\\2.html";
+                ConvertConfig config = new ConvertConfig().setHtmlPrint(new FilePrint(htmlPath))
+                        .setMaxRowNum(500).setMaxCellNum(500).setExcelType("HSSF");
+                Excel2Html excel2Html = new Excel2Html(config);
+                excel2Html.conver(excelPath, 0);
 		
 		
 目前针对自己的项目够用了，有时间以后再完善修改

@@ -88,7 +88,8 @@ public class ConvertConfig {
 				add(new EditorWidget());
 				add(new CheckWidget());
 				add(new DateWidget());
-				
+				add(new PicWidget());
+
 				//calc
 				add(new CalcNumWidget());
 				add(new CalcRltWidget());
