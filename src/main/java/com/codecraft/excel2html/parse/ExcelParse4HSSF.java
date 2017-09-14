@@ -1,32 +1,23 @@
 package com.codecraft.excel2html.parse;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.text.DecimalFormat;
-import java.util.Set;
-
+import com.codecraft.excel2html.config.ConvertConfig;
+import com.codecraft.excel2html.entity.*;
+import com.codecraft.excel2html.utils.ExcelUtils;
+import com.codecraft.excel2html.utils.StringsUtils;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFFont;
 import org.apache.poi.hssf.usermodel.HSSFPalette;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.Font;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.format.CellFormat;
+import org.apache.poi.ss.format.CellFormatResult;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
 
-import com.codecraft.excel2html.config.ConvertConfig;
-import com.codecraft.excel2html.entity.ExcelTable;
-import com.codecraft.excel2html.entity.ExcelTableTd;
-import com.codecraft.excel2html.entity.ExcelTableTdStyle;
-import com.codecraft.excel2html.entity.ExcelTableTr;
-import com.codecraft.excel2html.entity.RowColumnSpan;
-import com.codecraft.excel2html.utils.ExcelUtils;
-import com.codecraft.excel2html.utils.StringsUtils;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.util.Set;
 
 /**
  * hssf excel的解析器
@@ -37,13 +28,11 @@ public class ExcelParse4HSSF implements IExcelParse {
 	
 	private ConvertConfig config = null;
 
-	@Override
 	public ExcelTable parse(InputStream input, ConvertConfig config) throws Exception{
 		this.config = config;
 		return parse(input, 0, config);
 	}
 
-	@Override
 	public ExcelTable parse(InputStream input, int sheetIndex, ConvertConfig config) throws Exception{
 		this.config = config;
 		ExcelTable table = parseTable(input, sheetIndex);
@@ -197,34 +186,10 @@ public class ExcelParse4HSSF implements IExcelParse {
 	 * @throws Exception
 	 */
 	private String getCellContent(Cell cell) throws Exception {
-		switch (cell.getCellType()) {
-			case Cell.CELL_TYPE_STRING://string
-				String str = cell.getStringCellValue();
-				if (str==null || "".equals(str)) {
-					return "&nbsp;";
-				} else {
-					str = str.replaceAll(String.valueOf(' '),"&nbsp;");
-					str = str.replaceAll(String.valueOf('<'), "&lt;");
-					str = str.replaceAll(String.valueOf('>'), "&gt;");
-					str = str.replaceAll(String.valueOf('\n'), "</br>");
-					return str;
-				}
-			case Cell.CELL_TYPE_NUMERIC://numeric
-				//去掉整数后的'.0'
-				DecimalFormat format = new DecimalFormat("#0.##");
-				String result = format.format(cell.getNumericCellValue());
-				return result;
-			case Cell.CELL_TYPE_BOOLEAN://boolean
-				return cell.getBooleanCellValue() +"";
-			case Cell.CELL_TYPE_FORMULA: // 公式  
-                return "FORMULA";
-			case Cell.CELL_TYPE_BLANK://blank
-				return "";
-			case Cell.CELL_TYPE_ERROR: //error
-                return "ERROR";	
-			default:
-				return "";
-		}
+		CellFormat cf = CellFormat.getInstance(
+				cell.getCellStyle().getDataFormatString());
+		CellFormatResult result = cf.apply(cell);
+		return result.text;
 	}
 
 	/**
@@ -281,8 +246,6 @@ public class ExcelParse4HSSF implements IExcelParse {
 	/**
 	 * 解析字体样式(font-size,font-family,font-weight,font-style,color)
 	 * @param workbook
-	 * @param row
-	 * @param c
 	 * @param cellStyle
 	 * @param palette
 	 * @param td

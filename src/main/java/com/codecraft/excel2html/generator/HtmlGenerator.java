@@ -28,7 +28,7 @@ public class HtmlGenerator {
 	
 	/**
 	 * 返回html
-	 * @param excelEntity
+	 * @param table
 	 * @return
 	 * @throws Exception
 	 */
@@ -114,7 +114,7 @@ public class HtmlGenerator {
 		sb.append("<body>");
 		sb.append("<form id='preformForm'>");
 		//style='border-collapse:collapse;'  使用这个边框合并样式，会导致某些表单的边框变长很多,以后处理。
-		sb.append("<table id=\"preformTable\" border=\"0\" cellspacing=\"0\" align='center' cellpadding=\"0\" style='border-collapse:collapse;margin-top:70px'>");
+		sb.append("<table id=\"preformTable\" border=\"0\" cellspacing=\"0\" align='center' width='600px' cellpadding=\"0\" style='border-collapse:collapse;margin:0px auto'>");
 		sb.append(hiddenHtml(table));//隐藏域信息
 		theadHtml(table,sb);//table页眉
 		tfootHtml(table,sb);//table页脚

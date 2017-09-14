@@ -1,11 +1,11 @@
 package com.codecraft.excel2html.widget.basic;
 
-import java.util.Map;
-
 import com.codecraft.excel2html.entity.ExcelTable;
 import com.codecraft.excel2html.entity.ExcelTableTd;
 import com.codecraft.excel2html.utils.WidgeUtils;
 import com.codecraft.excel2html.widget.AbsWidget;
+
+import java.util.Map;
 /**
  * 单选控件
  * @author zoro
@@ -15,7 +15,6 @@ public class CheckWidget extends AbsWidget {
 
 	public static final String WIDGE_NAME = "chk".toLowerCase();
 
-	@Override
 	public String parseHtml4Edit(String widgeType, StringBuilder sb, ExcelTable table, ExcelTableTd td) throws Exception {
 		double width = td.getWidthNum();
 		String tagId = getTagId(table, WIDGE_NAME);
@@ -52,7 +51,6 @@ public class CheckWidget extends AbsWidget {
 		return "";
 	}
 
-	@Override
 	public String parseHtml4View(String widgeType, StringBuilder sb, ExcelTable table, ExcelTableTd td) throws Exception {
 		double width = td.getWidthNum();
 		String tagId = getTagId(table, WIDGE_NAME);
@@ -82,12 +80,10 @@ public class CheckWidget extends AbsWidget {
 		return "";
 	}
 
-	@Override
 	public void validate(String content){
 		
 	}
 
-	@Override
 	public boolean isCur(String widgeType){
 		if (widgeType.toLowerCase().startsWith(WIDGE_NAME + "[")){//必须是startWith
 			return true;

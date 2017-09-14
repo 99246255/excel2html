@@ -1,13 +1,13 @@
 package com.codecraft.excel2html.widget.calc;
 
-import java.util.Map;
-
 import com.codecraft.excel2html.cons.ExcelConstant;
 import com.codecraft.excel2html.entity.ExcelTable;
 import com.codecraft.excel2html.entity.ExcelTableTd;
 import com.codecraft.excel2html.utils.StringsUtils;
 import com.codecraft.excel2html.utils.WidgeUtils;
 import com.codecraft.excel2html.widget.AbsWidget;
+
+import java.util.Map;
 
 /**
  * 计算数据来源
@@ -16,7 +16,6 @@ public class CalcNumWidget extends AbsWidget {
 
 	public static final String WIDGE_NAME = "numtext".toLowerCase();
 
-	@Override
 	public String parseHtml4Edit(String widgeType, StringBuilder sb, ExcelTable table, ExcelTableTd td) throws Exception {
 		double width = td.getWidthNum();
 		String tagId = getTagId(table, WIDGE_NAME);
@@ -45,7 +44,6 @@ public class CalcNumWidget extends AbsWidget {
 		return "";
 	}
 
-	@Override
 	public String parseHtml4View(String widgeType, StringBuilder sb, ExcelTable table, ExcelTableTd td) throws Exception {
 		double width = td.getWidthNum();
 		String tagId = getTagId(table, WIDGE_NAME);
@@ -68,12 +66,10 @@ public class CalcNumWidget extends AbsWidget {
 		return "";
 	}
 
-	@Override
 	public void validate(String content)throws Exception {
 		
 	}
 
-	@Override
 	public boolean isCur(String widgeType){
 		if (widgeType.toLowerCase().startsWith(WIDGE_NAME)){
 			return true;

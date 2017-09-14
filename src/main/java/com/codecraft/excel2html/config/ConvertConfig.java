@@ -1,32 +1,19 @@
 package com.codecraft.excel2html.config;
 
-import java.text.SimpleDateFormat;
+import com.codecraft.excel2html.cons.ExcelConstant;
+import com.codecraft.excel2html.htmlPrint.IHtmlPrint;
+import com.codecraft.excel2html.parse.*;
+import com.codecraft.excel2html.picUpload.IExcelPicUpload;
+import com.codecraft.excel2html.widget.IWidget;
+import com.codecraft.excel2html.widget.basic.*;
+import com.codecraft.excel2html.widget.calc.CalcNumWidget;
+import com.codecraft.excel2html.widget.calc.CalcRltWidget;
 
+import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-
-import com.codecraft.excel2html.cons.ExcelConstant;
-import com.codecraft.excel2html.htmlPrint.FilePrint;
-import com.codecraft.excel2html.htmlPrint.IHtmlPrint;
-import com.codecraft.excel2html.parse.ExcelCellStyleParse4Hssf;
-import com.codecraft.excel2html.parse.ExcelContentParse;
-import com.codecraft.excel2html.parse.ExcelParse4HSSF;
-import com.codecraft.excel2html.parse.ExcelPicParse4HSSF;
-import com.codecraft.excel2html.parse.IExcelCellStyleParse;
-import com.codecraft.excel2html.parse.IExcelContentParse;
-import com.codecraft.excel2html.parse.IExcelParse;
-import com.codecraft.excel2html.parse.IExcelPicParse;
-import com.codecraft.excel2html.picUpload.IExcelPicUpload;
-import com.codecraft.excel2html.widget.IWidget;
-import com.codecraft.excel2html.widget.basic.CheckWidget;
-import com.codecraft.excel2html.widget.basic.DateWidget;
-import com.codecraft.excel2html.widget.basic.EditorWidget;
-import com.codecraft.excel2html.widget.basic.InputWidget;
-import com.codecraft.excel2html.widget.basic.TextareaWidget;
-import com.codecraft.excel2html.widget.calc.CalcNumWidget;
-import com.codecraft.excel2html.widget.calc.CalcRltWidget;
 
 /**
  * Excel解析的设置
@@ -93,7 +80,6 @@ public class ConvertConfig {
 		excelPicParse = new ExcelPicParse4HSSF();
 		excelStyleParse = new ExcelCellStyleParse4Hssf();
 		excelContentParse = new ExcelContentParse();
-		htmlPrint = new FilePrint();
 		defaultRegWidget = new HashSet<IWidget>(){
 			{
 				//basic

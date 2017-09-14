@@ -30,7 +30,6 @@ public class ExcelCellStyleParse4Hssf implements IExcelCellStyleParse {
 	/**
 	 * 解析样式,外部调用此方法
 	 */
-	@Override
 	public void parseStyle(Workbook wb, Sheet s, Row r,
 			Cell c, int bottomRow, int bottomCell, CellStyle cs, ExcelTable table,
 			ExcelTableTr tr, ExcelTableTd td,

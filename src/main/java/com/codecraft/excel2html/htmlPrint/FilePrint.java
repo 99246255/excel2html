@@ -4,8 +4,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * 文件输出
@@ -14,36 +12,18 @@ import java.util.Date;
  */
 public class FilePrint implements IHtmlPrint {
 	
-	private String dirPath = "c:/temp";
-	
-	private String fileName = "excel2html";
-	
-	private static final String FILE_TYPE = ".html";
-	
-	public FilePrint(){
-		
-	}
-	
+	private String fileName;
+
 	public FilePrint(String fileName){
 	 	this.fileName = fileName;
 	}
 	
-	public FilePrint(String fileName, String dirPath){
-	 	this.fileName = fileName;
-	 	this.dirPath = dirPath;
-	}
-	
-	@Override
+
 	public void print(String htmlContent) throws Exception {
-		File dir = new File(dirPath);
-		if(!dir.exists()){
-			dir.mkdirs();
+		File printFile = new File(fileName);
+		if(!printFile.exists()){
+			printFile.createNewFile();
 		}
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy_MM_dd-HH_mm_ss");
-		String dateStr = sdf.format(new Date());
-		
-		File printFile = new File(dir + File.separator + fileName + "-" + dateStr + FILE_TYPE );
-		
 		FileOutputStream fos = null;
 		OutputStreamWriter osw = null;
 		BufferedWriter bw = null;

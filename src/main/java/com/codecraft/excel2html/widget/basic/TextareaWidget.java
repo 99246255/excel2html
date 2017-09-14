@@ -8,24 +8,20 @@ public class TextareaWidget extends AbsWidget {
 
 	public static final String WIDGE_NAME = "textarea".toLowerCase();
 	
-	@Override
 	public String parseHtml4Edit(String widgeType, StringBuilder sb, ExcelTable table, ExcelTableTd td) throws Exception {
 		
 		return "";
 	}
 
-	@Override
 	public String parseHtml4View(String widgeType, StringBuilder sb, ExcelTable table, ExcelTableTd td) throws Exception {
 		
 		return "";
 	}
 
-	@Override
 	public void validate(String widgeType) throws Exception {
 		
 	}
 
-	@Override
 	public boolean isCur(String widgeType) {
 		if (widgeType.toLowerCase().startsWith(WIDGE_NAME)){
 			return true;

@@ -1,8 +1,8 @@
 package com.codecraft.excel2html.utils;
 
-import java.io.IOException;
-import java.io.InputStream;
-
+import com.codecraft.excel2html.entity.ExcelTable;
+import com.codecraft.excel2html.entity.ExcelTableTd;
+import com.codecraft.excel2html.entity.ExcelTableTr;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -11,9 +11,8 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
-import com.codecraft.excel2html.entity.ExcelTable;
-import com.codecraft.excel2html.entity.ExcelTableTd;
-import com.codecraft.excel2html.entity.ExcelTableTr;
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * excel工具类
@@ -278,153 +277,102 @@ public class ExcelUtils {
 	 */
 	public static String getBorderColor(short bordercolor) {
 		String type = "black";
-		switch (bordercolor) {
-		case org.apache.poi.hssf.util.HSSFColor.AUTOMATIC.index:
+		if(bordercolor == HSSFColor.HSSFColorPredefined.AUTOMATIC.getIndex()) {
 			type = "black";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.LIGHT_CORNFLOWER_BLUE.index:
+		}else if(bordercolor == HSSFColor.HSSFColorPredefined.LIGHT_CORNFLOWER_BLUE.getIndex()) {
 			type = "black";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.ROYAL_BLUE.index:
+		}else if(bordercolor == HSSFColor.HSSFColorPredefined.ROYAL_BLUE.getIndex()) {
 			type = "black";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.CORAL.index:
+		}else if(bordercolor == HSSFColor.HSSFColorPredefined.CORAL.getIndex()) {
 			type = "coral";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.ORCHID.index:
+		}else if(bordercolor ==HSSFColor.HSSFColorPredefined.ORCHID.getIndex()) {
 			type = "black";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.MAROON.index:
+		}else if(bordercolor ==HSSFColor.HSSFColorPredefined.MAROON.getIndex()) {
 			type = "black";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.LEMON_CHIFFON.index:
+		}else if(bordercolor ==HSSFColor.HSSFColorPredefined.LEMON_CHIFFON.getIndex()) {
 			type = "black";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.CORNFLOWER_BLUE.index:
+		}else if(bordercolor ==HSSFColor.HSSFColorPredefined.CORNFLOWER_BLUE.getIndex()) {
 			type = "black";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.WHITE.index:
+		}else if(bordercolor ==HSSFColor.HSSFColorPredefined.WHITE.getIndex()) {
 			type = "black";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.LAVENDER.index:
+		}else if(bordercolor ==HSSFColor.HSSFColorPredefined.LAVENDER.getIndex()) {
 			type = "black";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.PALE_BLUE.index:
+		}else if(bordercolor ==HSSFColor.HSSFColorPredefined.PALE_BLUE.getIndex()) {
 			type = "black";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.LIGHT_TURQUOISE.index:
+		}else if(bordercolor ==HSSFColor.HSSFColorPredefined.LIGHT_TURQUOISE.getIndex()) {
 			type = "black";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.LIGHT_GREEN.index:
+		}else if(bordercolor ==HSSFColor.HSSFColorPredefined.LIGHT_GREEN.getIndex()) {
 			type = "black";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.LIGHT_YELLOW.index:
+		}else if(bordercolor ==HSSFColor.HSSFColorPredefined.LIGHT_YELLOW.getIndex()) {
 			type = "black";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.TAN.index:
+		}else if(bordercolor ==HSSFColor.HSSFColorPredefined.TAN.getIndex()) {
 			type = "tan";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.ROSE.index:
+		}else if(bordercolor ==HSSFColor.HSSFColorPredefined.ROSE.getIndex()) {
 			type = "rose";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.GREY_25_PERCENT.index:
+		}else if(bordercolor ==HSSFColor.HSSFColorPredefined.GREY_25_PERCENT.getIndex()) {
 			type = "black";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.PLUM.index:
+		}else if(bordercolor ==HSSFColor.HSSFColorPredefined.PLUM.getIndex()) {
 			type = "black";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.SKY_BLUE.index:
+		}else if(bordercolor ==HSSFColor.HSSFColorPredefined.SKY_BLUE.getIndex()) {
 			type = "blue";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.TURQUOISE.index:
+		}else if(bordercolor == HSSFColor.HSSFColorPredefined.TURQUOISE.getIndex()) {
 			type = "black";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.BRIGHT_GREEN.index:
+		}else if(bordercolor == HSSFColor.HSSFColorPredefined.BRIGHT_GREEN.getIndex()) {
 			type = "black";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.YELLOW.index:
+		}else if(bordercolor == HSSFColor.HSSFColorPredefined.YELLOW.getIndex()) {
 			type = "yellow";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.GOLD.index:
+		}else if(bordercolor == HSSFColor.HSSFColorPredefined.GOLD.getIndex()) {
 			type = "gold";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.PINK.index:
+		}else if(bordercolor == HSSFColor.HSSFColorPredefined.PINK.getIndex()) {
 			type = "black";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.GREY_40_PERCENT.index:
+		}else if(bordercolor == HSSFColor.HSSFColorPredefined.GREY_40_PERCENT.getIndex()) {
 			type = "black";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.VIOLET.index:
+		}else if(bordercolor == HSSFColor.HSSFColorPredefined.VIOLET.getIndex()) {
 			type = "black";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.LIGHT_BLUE.index:
+		}else if(bordercolor == HSSFColor.HSSFColorPredefined.LIGHT_BLUE.getIndex()) {
 			type = "black";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.AQUA.index:
+		}else if(bordercolor == HSSFColor.HSSFColorPredefined.AQUA.getIndex()) {
 			type = "black";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.SEA_GREEN.index:
+		}else if(bordercolor == HSSFColor.HSSFColorPredefined.SEA_GREEN.getIndex()) {
 			type = "black";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.LIME.index:
+		}else if(bordercolor == HSSFColor.HSSFColorPredefined.LIME.getIndex()) {
 			type = "black";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.LIGHT_ORANGE.index:
+		}else if(bordercolor == HSSFColor.HSSFColorPredefined.LIGHT_ORANGE.getIndex()) {
 			type = "black";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.RED.index:
+		}else if(bordercolor == HSSFColor.HSSFColorPredefined.RED.getIndex()) {
 			type = "red";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.GREY_50_PERCENT.index:
+		}else if(bordercolor == HSSFColor.HSSFColorPredefined.GREY_50_PERCENT.getIndex()) {
 			type = "black";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.BLUE_GREY.index:
+		}else if(bordercolor == HSSFColor.HSSFColorPredefined.BLUE_GREY.getIndex()) {
 			type = "grey";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.BLUE.index:
+		}else if(bordercolor == HSSFColor.HSSFColorPredefined.BLUE.getIndex()) {
 			type = "blue";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.TEAL.index:
+		}else if(bordercolor == HSSFColor.HSSFColorPredefined.TEAL.getIndex()) {
 			type = "black";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.GREEN.index:
+		}else if(bordercolor == HSSFColor.HSSFColorPredefined.GREEN.getIndex()) {
 			type = "green";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.DARK_YELLOW.index:
+		}else if(bordercolor == HSSFColor.HSSFColorPredefined.DARK_YELLOW.getIndex()) {
 			type = "black";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.ORANGE.index:
+		}else if(bordercolor == HSSFColor.HSSFColorPredefined.ORANGE.getIndex()) {
 			type = "orange";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.DARK_RED.index:
+		}else if(bordercolor == HSSFColor.HSSFColorPredefined.DARK_RED.getIndex()) {
 			type = "black";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.GREY_80_PERCENT.index:
+		}else if(bordercolor == HSSFColor.HSSFColorPredefined.GREY_80_PERCENT.getIndex()) {
 			type = "black";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.INDIGO.index:
+		}else if(bordercolor == HSSFColor.HSSFColorPredefined.INDIGO.getIndex()) {
 			type = "black";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.DARK_BLUE.index:
+		}else if(bordercolor == HSSFColor.HSSFColorPredefined.DARK_BLUE.getIndex()) {
 			type = "black";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.DARK_TEAL.index:
+		}else if(bordercolor == HSSFColor.HSSFColorPredefined.DARK_TEAL.getIndex()) {
 			type = "black";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.DARK_GREEN.index:
+		}else if(bordercolor == HSSFColor.HSSFColorPredefined.DARK_GREEN.getIndex()) {
 			type = "black";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.OLIVE_GREEN.index:
+		}else if(bordercolor == HSSFColor.HSSFColorPredefined.OLIVE_GREEN.getIndex()) {
 			type = "black";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.BROWN.index:
+		}else if(bordercolor == HSSFColor.HSSFColorPredefined.BROWN.getIndex()) {
 			type = "brown";
-			break;
-		case org.apache.poi.hssf.util.HSSFColor.BLACK.index:
+		}else if(bordercolor == HSSFColor.HSSFColorPredefined.BLACK.getIndex()) {
 			type = "black";
-			break;
-		default:
-			break;
 		}
 		return type;
 	}

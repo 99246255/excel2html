@@ -1,34 +1,30 @@
 package com.codecraft.excel2html.widget.basic;
 
-import java.util.List;
-
 import com.codecraft.excel2html.entity.ExcelTable;
 import com.codecraft.excel2html.entity.ExcelTableTd;
 import com.codecraft.excel2html.entity.PictureStyle;
 import com.codecraft.excel2html.widget.AbsWidget;
 
+import java.util.List;
+
 public class PicWidget extends AbsWidget {
 
 	public static final String WIDGE_NAME = "pic".toLowerCase();
 	
-	@Override
 	public String parseHtml4Edit(String widgetType, StringBuilder sb,
 			ExcelTable table, ExcelTableTd td) throws Exception {
 		return parseContent(table);
 	}
 
-	@Override
 	public String parseHtml4View(String widgetType, StringBuilder sb,
 			ExcelTable table, ExcelTableTd td) throws Exception {
 		return parseContent(table);
 	}
 	
-	@Override
 	public void validate(String widgetType) throws Exception {
 		
 	}
 
-	@Override
 	public boolean isCur(String widgetType) {
 		if(widgetType.equalsIgnoreCase(WIDGE_NAME)){
 			return true;

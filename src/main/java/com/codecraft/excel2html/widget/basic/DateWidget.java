@@ -1,12 +1,12 @@
 package com.codecraft.excel2html.widget.basic;
 
-import java.util.Map;
-
 import com.codecraft.excel2html.cons.ExcelConstant;
 import com.codecraft.excel2html.entity.ExcelTable;
 import com.codecraft.excel2html.entity.ExcelTableTd;
 import com.codecraft.excel2html.utils.WidgeUtils;
 import com.codecraft.excel2html.widget.AbsWidget;
+
+import java.util.Map;
 /**
  *  date--时间控件
  */
@@ -14,7 +14,7 @@ public class DateWidget extends AbsWidget {
 
 	public String WIDGE_NAME = "date".toLowerCase();
 
-	@Override
+	
 	public String parseHtml4Edit(String widgeType, StringBuilder sb, ExcelTable table, ExcelTableTd td) throws Exception {
 		double width = td.getWidthNum();
 		double height = td.getHeightNum();
@@ -42,7 +42,7 @@ public class DateWidget extends AbsWidget {
 		return "";
 	}
 
-	@Override
+	
 	public String parseHtml4View(String widgeType, StringBuilder sb, ExcelTable table, ExcelTableTd td) throws Exception {
 		double width = td.getWidthNum();
 		double height = td.getHeightNum();
@@ -66,11 +66,9 @@ public class DateWidget extends AbsWidget {
 		return "";
 	}
 
-	@Override
 	public void validate(String content){
 	}
 
-	@Override
 	public boolean isCur(String widgeType){
 		if (widgeType.toLowerCase().startsWith(WIDGE_NAME)){
 			return true;

@@ -1,13 +1,13 @@
 package com.codecraft.excel2html.parse;
 
-import java.util.Set;
-
 import com.codecraft.excel2html.config.ConvertConfig;
 import com.codecraft.excel2html.entity.ExcelTable;
 import com.codecraft.excel2html.entity.ExcelTableTd;
 import com.codecraft.excel2html.entity.ExcelTableTr;
 import com.codecraft.excel2html.utils.StringsUtils;
 import com.codecraft.excel2html.widget.IWidget;
+
+import java.util.Set;
 
 /**
  * excel内容解析器
@@ -18,7 +18,6 @@ public class ExcelContentParse implements IExcelContentParse{
 	/**
 	 * 解析html内容 (包含控件)
 	 */
-	@Override
 	public String parseConten(ExcelTable table, ExcelTableTr tr, ExcelTableTd td)
 			throws Exception {
 		ConvertConfig config = table.getConfig();
