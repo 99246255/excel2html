@@ -23,7 +23,6 @@ Please note, that this method works correctly only for workbooks with the defaul
                         .setMaxRowNum(500).setMaxCellNum(500).setExcelType("HSSF");
                 Excel2Html excel2Html = new Excel2Html(config);
                 excel2Html.conver(excelPath, 0);
-		
-		
-目前针对自己的项目够用了，有时间以后再完善修改
+2017-9-21 此方式在某些情况下比excel转PDF效果好，但是后续支持太局限，已放弃使用此方式
+推荐使用OpenOffice + PDF.js实现在线预览或者使用微软在线Office服务
   
